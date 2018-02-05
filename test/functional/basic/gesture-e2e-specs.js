@@ -85,7 +85,7 @@ describe('XCUITestDriver - gestures', function () {
       it('should long press on an element', async function () {
         let el1 = await driver.elementByAccessibilityId('Okay / Cancel');
         let action = new wd.TouchAction(driver);
-        action.longPress({el: el1});
+        action.longPress({el: el1}).release();
         await action.perform();
 
         await exitModal('Cancel');
@@ -101,7 +101,7 @@ describe('XCUITestDriver - gestures', function () {
       it('should long press on an element with duration through pressOpts.duration', async function () {
         let el1 = await driver.elementByAccessibilityId('Okay / Cancel');
         let action = new wd.TouchAction(driver);
-        action.longPress({el: el1, duration: 1200});
+        action.longPress({el: el1, duration: 1200}).release();
         await action.perform();
 
         await exitModal('Cancel');
