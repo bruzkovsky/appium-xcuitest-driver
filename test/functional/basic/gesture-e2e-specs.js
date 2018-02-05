@@ -12,7 +12,7 @@ import { APPIUM_IMAGE } from '../web/helpers';
 chai.should();
 chai.use(chaiAsPromised);
 
-describe('XCUITestDriver - gestures', function () {
+describe.only('XCUITestDriver - gestures', function () { // eslint-disable-line
   this.timeout(MOCHA_TIMEOUT);
 
   let driver;
@@ -38,6 +38,9 @@ describe('XCUITestDriver - gestures', function () {
           let el = await driver.elementByAccessibilityId('Action Sheets');
           await driver.execute('mobile: scroll', {element: el, toVisible: true});
           await el.click();
+          await B.delay(1000);
+          console.log(await driver.source()); // eslint-disable-line
+          await driver.elementByAccessibilityId('Okay / Cancel');
         });
       });
 
